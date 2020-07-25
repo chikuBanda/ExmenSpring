@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/}">Resource Humaines</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/employe/}">Employes</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/departement/}">Departements</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 100px">
+    <h4>Departements administratif</h4>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Dep no.</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Nombre d'employes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dep: ${depsAdmin}">
+            <td>
+                <a th:text="${dep.depID}" th:href="@{/departement/administratif/{id}(id=${dep.depID})}"></a>
+            </td>
+            <td th:text="${dep.nom}"></td>
+            <td th:text="${dep.listEmp.size()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-3 offset-md-9" style="text-align: right">
+            <a class="btn btn-primary" th:href="@{/departement/administratif/add}" style="margin-bottom: 50px">Ajouter departement</a>
+        </div>
+    </div>
+
+    <h4>Departements service</h4>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Dep no.</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Nombre d'employes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dep: ${depsServ}">
+            <td>
+                <a th:text="${dep.depID}" th:href="@{/departement/service/{id}(id=${dep.depID})}"></a>
+            </td>
+            <td th:text="${dep.nom}"></td>
+            <td th:text="${dep.listEmp.size()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-3 offset-md-9" style="text-align: right">
+            <a class="btn btn-primary" th:href="@{/departement/service/add}" style="margin-bottom: 50px">Ajouter departement</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

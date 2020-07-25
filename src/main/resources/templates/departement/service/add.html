@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/}">Resource Humaines</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/employe/}">Employes</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/departement/}">Departements</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px; padding-right: 200px; padding-left: 200px">
+    <form th:action="@{/add_depservice}"
+          th:object="${depService}" method="post">
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3 form-group" style="margin-bottom: 30px">
+                <div class="form-group">
+                    <label for="nom">Nom de departement</label>
+                    <input class="form-control" type="text" th:field="*{nom}" id="nom" placeholder="nom">
+                    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6 offset-md-3" style="text-align: right">
+                <button type="submit" class="btn btn-success">Ajouter departement</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
