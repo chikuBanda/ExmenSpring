@@ -13,8 +13,7 @@ public class Manager extends Employe{
     @ManyToOne
     public DepAdminstratif dep;
 
-    @OneToMany()
-    @JoinColumn(name="manager_empid")
+    @OneToMany(targetEntity=NormalEmp.class,cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "manager")
     public List<NormalEmp> listEmp;
 
     public Manager(){}

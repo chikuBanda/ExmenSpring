@@ -13,7 +13,8 @@ public class NormalEmp extends Employe{
     @ManyToOne
     public DepService dep;
 
-    @ManyToOne
+    @ManyToOne(targetEntity=Manager.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_empid")
     public Manager manager;
 
     public NormalEmp(){}

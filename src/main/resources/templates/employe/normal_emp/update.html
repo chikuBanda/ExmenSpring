@@ -24,10 +24,11 @@
 </nav>
 
 <div class="container" style="padding-top: 70px; padding-right: 200px; padding-left: 200px">
-    <form th:action="@{/add_employe}"
+    <form th:action="@{/modifier_employe}"
           th:object="${normalEmp}" method="post">
 
         <div class="row">
+            <input type="hidden" th:field="*{empID}" />
 
             <div class="col-md-5 form-group" style="margin-bottom: 40px">
                 <div class="form-group">
@@ -48,7 +49,12 @@
             <div class="col-md-5 form-group" style="margin-bottom: 40px">
                 <label for="dep">Departement</label>
                 <select class="form-control" id="dep" th:field="*{dep.depID}">
-                    <option th:each="dep: ${deps}" th:value="${dep.depID}" th:text="${dep.nom}">
+                    <option
+                            th:each="dep: ${deps}"
+                            th:value="${dep.depID}"
+                            th:text="${dep.nom}"
+                            th:selected="${dep.depID} == ${normalEmp.dep.depID}"
+                    >
                     </option>
                 </select>
             </div>
@@ -56,13 +62,18 @@
             <div class="col-md-5 offset-md-2 form-group" style="margin-bottom: 40px">
                 <label for="manager">Manager</label>
                 <select class="form-control" id="manager" th:field="*{manager.empID}">
-                    <option th:each="manager: ${managers}" th:value="${manager.empID}" th:text="${manager.nom}">
+                    <option
+                            th:each="manager: ${managers}"
+                            th:value="${manager.empID}"
+                            th:text="${manager.nom}"
+                            th:selected="${manager.empID} == ${normalEmp.manager.empID}"
+                    >
                     </option>
                 </select>
             </div>
 
             <div class="col-md-3 offset-md-9">
-                <button type="submit" class="btn btn-success" style="width: 100%">add employe</button>
+                <button type="submit" class="btn btn-success" style="width: 100%">Modifier</button>
             </div>
 
         </div>

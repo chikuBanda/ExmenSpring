@@ -56,4 +56,23 @@ public class NormalController {
         model.addAttribute("normalEmp", normalEmpService.findById(id));
         return "employe/normal_emp/show";
     }
+
+    @GetMapping(value = {"/employe/modifier/{id}"})
+    public String update(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
+    {
+        model.addAttribute("normalEmp", normalEmpService.findById(id));
+        model.addAttribute("deps", depServService.getDeps());
+        model.addAttribute("managers", managerService.getManagers());
+        return "employe/normal_emp/update";
+    }
+
+    @PostMapping("/modifier_employe")
+    public String modifier(@Valid @ModelAttribute("normalEmp")NormalEmp normalEmp, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "employe/normal_emp/update";
+        }
+
+        normalEmpService.save(normalEmp);
+        return "redirect:/employe/";
+    }
 }

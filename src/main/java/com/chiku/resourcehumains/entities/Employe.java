@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 @MappedSuperclass
 public class Employe {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long empID;
 
     @Size(min=3, message = "minimum 3 lettre")

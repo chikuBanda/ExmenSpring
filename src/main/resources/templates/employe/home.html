@@ -33,6 +33,7 @@
             <th scope="col">Prenom</th>
             <th scope="col">Departement</th>
             <th scope="col">Manager</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -44,6 +45,15 @@
             <td th:text="${emp.prenom}"></td>
             <td th:text="${emp.dep.nom}"></td>
             <td th:text="|${emp.manager.nom} ${emp.manager.prenom}|"></td>
+            <td>
+                <a class="btn btn-danger"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
+                    Supprimer
+                </a>
+                <a class="btn btn-success" th:href="@{/employe/modifier/{id}(id=${emp.empID})}">
+                    Modifier
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -63,6 +73,7 @@
             <th scope="col">Prenom</th>
             <th scope="col">Departement</th>
             <th scope="col">Subjacents</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -74,6 +85,15 @@
             <td th:text="${emp.prenom}"></td>
             <td th:text="${emp.dep.nom}">
             <td th:text="${emp.listEmp.size()}"></td>
+            <td>
+                <a class="btn btn-danger"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
+                    Supprimer
+                </a>
+                <a class="btn btn-success" th:href="@{/manager/modifier/{id}(id=${emp.empID})}">
+                    Modifier
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

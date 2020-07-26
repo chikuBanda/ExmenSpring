@@ -24,10 +24,11 @@
 </nav>
 
 <div class="container" style="padding-top: 70px; padding-right: 200px; padding-left: 200px">
-    <form th:action="@{/modifier_employe}"
-          th:object="${normalEmp}" method="post">
+    <form th:action="@{/modifier_manager}"
+          th:object="${manager}" method="post">
 
         <div class="row">
+            <input type="hidden" th:field="*{empID}" />
 
             <div class="col-md-5 form-group" style="margin-bottom: 40px">
                 <div class="form-group">
@@ -52,20 +53,7 @@
                             th:each="dep: ${deps}"
                             th:value="${dep.depID}"
                             th:text="${dep.nom}"
-                            th:selected="${dep.depID} == ${normalEmp.dep.depID}"
-                    >
-                    </option>
-                </select>
-            </div>
-
-            <div class="col-md-5 offset-md-2 form-group" style="margin-bottom: 40px">
-                <label for="manager">Manager</label>
-                <select class="form-control" id="manager" th:field="*{manager.empID}">
-                    <option
-                            th:each="manager: ${managers}"
-                            th:value="${manager.empID}"
-                            th:text="${manager.nom}"
-                            th:selected="${manager.empID} == ${normalEmp.manager.empID}"
+                            th:selected="${dep.depID} == ${manager.dep.depID}"
                     >
                     </option>
                 </select>

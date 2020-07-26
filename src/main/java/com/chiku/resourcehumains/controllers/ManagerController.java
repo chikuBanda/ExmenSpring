@@ -2,6 +2,7 @@ package com.chiku.resourcehumains.controllers;
 
 import com.chiku.resourcehumains.entities.DepAdminstratif;
 import com.chiku.resourcehumains.entities.Manager;
+import com.chiku.resourcehumains.entities.NormalEmp;
 import com.chiku.resourcehumains.exceptions.ResourceNotFoundException;
 import com.chiku.resourcehumains.services.DepAdministratifService;
 import com.chiku.resourcehumains.services.ManagerService;
@@ -49,5 +50,23 @@ public class ManagerController {
     {
         model.addAttribute("manager", managerService.findById(id));
         return "employe/manager/show";
+    }
+
+    @GetMapping(value = {"/manager/modifier/{id}"})
+    public String update(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
+    {
+        model.addAttribute("manager", managerService.findById(id));
+        model.addAttribute("deps", depAdministratifService.getDeps());
+        return "employe/manager/update";
+    }
+
+    @PostMapping("/modifier_manager")
+    public String modifier(@Valid @ModelAttribute("manager") Manager manager, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "employe/manager/update";
+        }
+
+        managerService.save(manager);
+        return "redirect:/employe/";
     }
 }
