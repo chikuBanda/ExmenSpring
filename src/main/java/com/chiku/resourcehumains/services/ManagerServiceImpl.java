@@ -30,4 +30,9 @@ public class ManagerServiceImpl implements ManagerService{
                 ()->new ResourceNotFoundException(id)
         );
     }
+
+    @Override
+    public void deleteById(long id) {
+        managerRepository.deleteById(id);
+    }
 }

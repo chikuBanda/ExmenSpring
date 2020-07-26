@@ -10,4 +10,5 @@ public interface ManagerService {
     void save(Manager manager);
     List<Manager> getManagers();
     Manager findById(long id) throws ResourceNotFoundException;
+    void deleteById(long id);
 }

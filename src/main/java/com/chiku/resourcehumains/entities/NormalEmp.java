@@ -11,6 +11,7 @@ import java.util.List;
 public class NormalEmp extends Employe{
 
     @ManyToOne
+    @JoinColumn(name="dep_depid")
     public DepService dep;
 
     @ManyToOne(targetEntity=Manager.class, fetch = FetchType.LAZY)

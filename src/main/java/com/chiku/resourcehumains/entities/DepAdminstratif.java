@@ -10,8 +10,7 @@ import java.util.List;
 @Table(name = "dep_administratifs")
 public class DepAdminstratif extends Department{
 
-    @OneToMany()
-    @JoinColumn(name="dep_depid")
+    @OneToMany(targetEntity=Manager.class,cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "dep")
     public List<Manager> listEmp;
 
     public DepAdminstratif(){}

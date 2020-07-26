@@ -9,4 +9,5 @@ public interface NormalEmpService {
     public void save(NormalEmp normalEmp);
     List<NormalEmp> getEmps();
     NormalEmp findById(long id) throws ResourceNotFoundException;
+    public void deleteById(long id);
 }

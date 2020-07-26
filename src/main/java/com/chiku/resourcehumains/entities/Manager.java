@@ -11,6 +11,7 @@ import java.util.List;
 public class Manager extends Employe{
 
     @ManyToOne
+    @JoinColumn(name="dep_depid")
     public DepAdminstratif dep;
 
     @OneToMany(targetEntity=NormalEmp.class,cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "manager")

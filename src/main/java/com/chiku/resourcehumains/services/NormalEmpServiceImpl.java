@@ -29,4 +29,9 @@ public class NormalEmpServiceImpl implements NormalEmpService{
                 ()->new ResourceNotFoundException(id)
         );
     }
+
+    @Override
+    public void deleteById(long id) {
+        normalEmpRepository.deleteById(id);
+    }
 }

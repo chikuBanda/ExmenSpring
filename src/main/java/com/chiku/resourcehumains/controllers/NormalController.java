@@ -47,7 +47,7 @@ public class NormalController {
         }
 
         normalEmpService.save(normalEmp);
-        return "redirect:/";
+        return "redirect:/employe/";
     }
 
     @GetMapping(value = {"/employe/{id}"})
@@ -73,6 +73,13 @@ public class NormalController {
         }
 
         normalEmpService.save(normalEmp);
+        return "redirect:/employe/";
+    }
+
+    @GetMapping(value = {"/employe/delete/{id}"})
+    public String delete(@PathVariable("id") long id) throws ResourceNotFoundException
+    {
+        normalEmpService.deleteById(id);
         return "redirect:/employe/";
     }
 }

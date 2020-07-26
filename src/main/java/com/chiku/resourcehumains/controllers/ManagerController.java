@@ -69,4 +69,11 @@ public class ManagerController {
         managerService.save(manager);
         return "redirect:/employe/";
     }
+
+    @GetMapping(value = {"/manager/delete/{id}"})
+    public String delete(@PathVariable("id") long id) throws ResourceNotFoundException
+    {
+        managerService.deleteById(id);
+        return "redirect:/employe/";
+    }
 }

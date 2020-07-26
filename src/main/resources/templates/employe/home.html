@@ -47,7 +47,8 @@
             <td th:text="|${emp.manager.nom} ${emp.manager.prenom}|"></td>
             <td>
                 <a class="btn btn-danger"
-                   onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
+                   th:href="@{/employe/delete/{id}(id=${emp.empID})}"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
                     Supprimer
                 </a>
                 <a class="btn btn-success" th:href="@{/employe/modifier/{id}(id=${emp.empID})}">
@@ -86,7 +87,13 @@
             <td th:text="${emp.dep.nom}">
             <td th:text="${emp.listEmp.size()}"></td>
             <td>
-                <a class="btn btn-danger"
+                <a th:if="${emp.listEmp.size() == 0}" class="btn btn-danger"
+                   th:href="@{/manager/delete/{id}(id=${emp.empID})}"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
+                    Supprimer
+                </a>
+                <a th:if="${emp.listEmp.size() > 0}" class="btn disabled btn-danger"
+                   th:href="@{/manager/delete/{id}(id=${emp.empID})}"
                    onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
                     Supprimer
                 </a>
