@@ -31,6 +31,7 @@
             <th scope="col">Dep no.</th>
             <th scope="col">Nom</th>
             <th scope="col">Nombre d'employes</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -40,6 +41,21 @@
             </td>
             <td th:text="${dep.nom}"></td>
             <td th:text="${dep.listEmp.size()}"></td>
+            <td>
+                <a th:if="${dep.listEmp.size() == 0}" class="btn btn-danger"
+                   th:href="@{/departement/administratif/delete/{id}(id=${dep.depID})}"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
+                    Supprimer
+                </a>
+                <a th:if="${dep.listEmp.size() > 0}" class="btn disabled btn-danger"
+                   th:href="@{/departement/administratif/delete/{id}(id=${dep.depID})}"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
+                    Supprimer
+                </a>
+                <a class="btn btn-success" th:href="@{/departement/administratif/modifier/{id}(id=${dep.depID})}">
+                    Modifier
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -57,6 +73,7 @@
             <th scope="col">Dep no.</th>
             <th scope="col">Nom</th>
             <th scope="col">Nombre d'employes</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -66,6 +83,21 @@
             </td>
             <td th:text="${dep.nom}"></td>
             <td th:text="${dep.listEmp.size()}"></td>
+            <td>
+                <a th:if="${dep.listEmp.size() == 0}" class="btn btn-danger"
+                   th:href="@{/departement/service/delete/{id}(id=${dep.depID})}"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
+                    Supprimer
+                </a>
+                <a th:if="${dep.listEmp.size() > 0}" class="btn disabled btn-danger"
+                   th:href="@{/departement/service/delete/{id}(id=${dep.depID})}"
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
+                    Supprimer
+                </a>
+                <a class="btn btn-success" th:href="@{/departement/service/modifier/{id}(id=${dep.depID})}">
+                    Modifier
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

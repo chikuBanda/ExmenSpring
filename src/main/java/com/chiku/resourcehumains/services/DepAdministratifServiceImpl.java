@@ -33,4 +33,9 @@ public class DepAdministratifServiceImpl implements DepAdministratifService{
                 ()->new ResourceNotFoundException(id)
         );
     }
+
+    @Override
+    public void deleteById(long id) {
+        depAdministratifRepository.deleteById(id);
+    }
 }

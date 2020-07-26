@@ -10,4 +10,5 @@ public interface DepServService {
     void save(DepService depService);
     List<DepService> getDeps();
     DepService findById(long id) throws ResourceNotFoundException;
+    void deleteById(long id);
 }

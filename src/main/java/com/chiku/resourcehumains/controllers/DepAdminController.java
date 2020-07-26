@@ -42,10 +42,36 @@ public class DepAdminController {
         return "redirect:/";
     }
 
+    @GetMapping(value = {"/departement/administratif/modifier/{id}"})
+    public String update(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
+    {
+        model.addAttribute("depAdminstratif", depAdministratifService.findById(id));
+
+        return "departement/administratif/update";
+    }
+
+    @PostMapping("/modifier_depadmin")
+    public String modifier(@Valid @ModelAttribute("depAdminstratif") DepAdminstratif depAdminstratif, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "departement/administratif/update";
+        }
+
+        depAdministratifService.save(depAdminstratif);
+        return "redirect:/";
+    }
+
     @GetMapping(value = {"/departement/administratif/{id}"})
     public String show(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("dep", depAdministratifService.findById(id));
         return "departement/administratif/show";
     }
+
+    @GetMapping(value = {"/departement/administratif/delete/{id}"})
+    public String delete(@PathVariable("id") long id) throws ResourceNotFoundException
+    {
+        depAdministratifService.deleteById(id);
+        return "redirect:/";
+    }
+
 }

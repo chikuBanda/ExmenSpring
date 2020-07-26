@@ -30,4 +30,9 @@ public class DepServServiceImpl implements DepServService{
                 ()->new ResourceNotFoundException(id)
         );
     }
+
+    @Override
+    public void deleteById(long id) {
+        depServiceRepository.deleteById(id);
+    }
 }

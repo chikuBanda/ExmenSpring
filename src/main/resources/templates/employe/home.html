@@ -89,12 +89,12 @@
             <td>
                 <a th:if="${emp.listEmp.size() == 0}" class="btn btn-danger"
                    th:href="@{/manager/delete/{id}(id=${emp.empID})}"
-                   onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
                     Supprimer
                 </a>
                 <a th:if="${emp.listEmp.size() > 0}" class="btn disabled btn-danger"
                    th:href="@{/manager/delete/{id}(id=${emp.empID})}"
-                   onclick="if (!(confirm('Vous Voulez supprimer cet elementr?'))) return false">
+                   onclick="if (!(confirm('Vous Voulez supprimer cet element?'))) return false">
                     Supprimer
                 </a>
                 <a class="btn btn-success" th:href="@{/manager/modifier/{id}(id=${emp.empID})}">

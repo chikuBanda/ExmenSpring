@@ -10,4 +10,5 @@ public interface DepAdministratifService {
     void save(DepAdminstratif depAdminstratif);
     List<DepAdminstratif> getDeps();
     DepAdminstratif findById(long id) throws ResourceNotFoundException;
+    void deleteById(long id);
 }
