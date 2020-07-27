@@ -21,11 +21,12 @@ public class DepController {
     @Autowired
     DepServService depServService;
 
-    @GetMapping(value = {"/", "/departement/"})
+    @GetMapping(value = {"/departement/"})
     public String home(Model model)
     {
         model.addAttribute("depsAdmin", depAdministratifService.getDeps());
         model.addAttribute("depsServ", depServService.getDeps());
+        model.addAttribute("navDepActive", "active");
         return "departement/home";
     }
 }

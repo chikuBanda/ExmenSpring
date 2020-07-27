@@ -26,6 +26,7 @@ public class DepServiceController {
     {
         DepService depService = new DepService();
         model.addAttribute("depService", depService);
+        model.addAttribute("navDepActive", "active");
 
         return "departement/service/add";
     }
@@ -44,6 +45,8 @@ public class DepServiceController {
     public String show(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("dep", depServService.findById(id));
+        model.addAttribute("navDepActive", "active");
+
         return "departement/service/show";
     }
 
@@ -51,6 +54,7 @@ public class DepServiceController {
     public String update(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("depService", depServService.findById(id));
+        model.addAttribute("navDepActive", "active");
 
         return "departement/service/update";
     }
@@ -69,7 +73,7 @@ public class DepServiceController {
     public String delete(@PathVariable("id") long id) throws ResourceNotFoundException
     {
         depServService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/departement/";
     }
 
 }

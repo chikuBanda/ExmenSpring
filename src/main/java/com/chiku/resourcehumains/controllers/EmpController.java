@@ -15,11 +15,13 @@ public class EmpController {
     @Autowired
     NormalEmpService normalEmpService;
 
-    @GetMapping(value = {"/employe/"})
+    @GetMapping(value = {"/", "/employe/"})
     public String home(Model model)
     {
         model.addAttribute("empsNormale", normalEmpService.getEmps());
         model.addAttribute("empsManager", managerService.getManagers());
+        model.addAttribute("navEmpActive", "active");
+
         return "employe/home";
     }
 }

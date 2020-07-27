@@ -28,6 +28,7 @@ public class DepAdminController {
     {
         DepAdminstratif depAdminstratif = new DepAdminstratif();
         model.addAttribute("depAdminstratif", depAdminstratif);
+        model.addAttribute("navDepActive", "active");
 
         return "departement/administratif/add";
     }
@@ -46,6 +47,7 @@ public class DepAdminController {
     public String update(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("depAdminstratif", depAdministratifService.findById(id));
+        model.addAttribute("navDepActive", "active");
 
         return "departement/administratif/update";
     }
@@ -64,6 +66,8 @@ public class DepAdminController {
     public String show(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("dep", depAdministratifService.findById(id));
+        model.addAttribute("navDepActive", "active");
+
         return "departement/administratif/show";
     }
 
@@ -71,7 +75,7 @@ public class DepAdminController {
     public String delete(@PathVariable("id") long id) throws ResourceNotFoundException
     {
         depAdministratifService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/departement/";
     }
 
 }

@@ -36,6 +36,7 @@ public class NormalController {
         model.addAttribute("normalEmp", normalEmp);
         model.addAttribute("deps", depServService.getDeps());
         model.addAttribute("managers", managerService.getManagers());
+        model.addAttribute("navEmpActive", "active");
 
         return "employe/normal_emp/add";
     }
@@ -54,6 +55,8 @@ public class NormalController {
     public String show(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("normalEmp", normalEmpService.findById(id));
+        model.addAttribute("navEmpActive", "active");
+
         return "employe/normal_emp/show";
     }
 
@@ -63,6 +66,8 @@ public class NormalController {
         model.addAttribute("normalEmp", normalEmpService.findById(id));
         model.addAttribute("deps", depServService.getDeps());
         model.addAttribute("managers", managerService.getManagers());
+        model.addAttribute("navEmpActive", "active");
+
         return "employe/normal_emp/update";
     }
 

@@ -31,6 +31,7 @@ public class ManagerController {
         Manager manager = new Manager();
         model.addAttribute("manager", manager);
         model.addAttribute("deps", depAdministratifService.getDeps());
+        model.addAttribute("navEmpActive", "active");
 
         return "employe/manager/add";
     }
@@ -49,6 +50,8 @@ public class ManagerController {
     public String show(@PathVariable("id") long id, Model model) throws ResourceNotFoundException
     {
         model.addAttribute("manager", managerService.findById(id));
+        model.addAttribute("navEmpActive", "active");
+
         return "employe/manager/show";
     }
 
@@ -57,6 +60,8 @@ public class ManagerController {
     {
         model.addAttribute("manager", managerService.findById(id));
         model.addAttribute("deps", depAdministratifService.getDeps());
+        model.addAttribute("navEmpActive", "active");
+
         return "employe/manager/update";
     }
 
